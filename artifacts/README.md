@@ -56,6 +56,15 @@ Running a figure without the prefix uses the reduced-memory artifact setting
 (`-Xmx16g` in a 20 GB container), which is intended for smoke testing rather
 than matching the paper's memory configuration.
 
+## Note on paper and artifact results
+
+The numbers currently reported in the paper were obtained using the submitted
+version of the implementation. This artifact includes subsequent correctness
+fixes and other implementation changes, so results reproduced with the artifact
+may differ from the numbers in the submitted paper. We will rerun the full
+evaluation and update the reported numbers in the
+camera-ready version.
+
 ## Figure 6
 
 ```bash
