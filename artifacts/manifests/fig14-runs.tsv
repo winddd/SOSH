@@ -1,0 +1,6 @@
+id	label	history_relative_to_figure	source_path	mode	format	from_file	extra_flags	paper_value	note
+f14_10k	3K post-pruning superpositions	inputs/rw_10k	viper_logs/osdi25/cobrabench/fromCobraBenchOriginal/rw_10k	B_SER	cobra	false	-no_hashmap	4.04s	-
+f14_20k	6K post-pruning superpositions	inputs/rw_20k	viper_logs/osdi25/cobrabench/fromCobraBenchOriginal/rw_20k	B_SER	cobra	false	-no_hashmap	11.54s	-
+f14_40k	12K post-pruning superpositions	inputs/rw_40k	viper_logs/osdi25/cobrabench/fromCobraBenchOriginal/rw_40k	B_SER	cobra	false	-no_hashmap	41.31s	-
+f14_60k	18K post-pruning superpositions	inputs/rw_60k	viper_logs/osdi25/cobrabench/fromCobraBenchOriginal/rw_60k	B_SER	cobra	false	-no_hashmap	103.63s	-
+f14_80k	24K post-pruning superpositions	inputs/rw_80k	viper_logs/osdi25/cobrabench/fromCobraBenchOriginal/rw_80k	B_SER	cobra	false	-no_hashmap	179.06s	-

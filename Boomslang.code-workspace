@@ -1,0 +1,40 @@
+{
+  "folders": [
+    {
+      "name": "Boomslang",
+      "path": "."
+    }
+  ],
+  "settings": {
+    // -------------------------------
+    // Java configuration
+    // -------------------------------
+    "java.compile.nullAnalysis.mode": "disabled",
+    // Enable VS Code's built-in Eclipse formatter
+    "java.format.enabled": true,
+    // Explicitly set default formatter to Red Hat Java extension
+    "[java]": {
+      "editor.formatOnSave": true,
+      "editor.defaultFormatter": "redhat.java"
+    },
+    // -------------------------------
+    // Code quality and linting
+    // -------------------------------
+    "checkstyle.configuration": "./style/google_checks.xml",
+    "checkstyle.enabled": true,
+    // Organize imports automatically on save
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    },
+    // -------------------------------
+    // General editor settings
+    // -------------------------------
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+    // Additional ruler settings
+    "editor.guides.indentation": true,
+    "editor.guides.highlightActiveIndentation": true,
+    "editor.guides.bracketPairs": true
+  }
+}

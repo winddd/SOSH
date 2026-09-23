@@ -1,0 +1,7 @@
+HOWTO
+
+# Local experiment output and debug dumps.
+*.log
+*.log[0-9]*
+*_cons.txt
+*_debug.txt

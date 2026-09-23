@@ -1,0 +1,9 @@
+edn_format
+numpy<2
+tqdm
+z3-solver
+requests
+bitmap
+networkx==2.5
+pyyaml
+dnspython

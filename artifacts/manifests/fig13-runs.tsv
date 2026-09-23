@@ -1,0 +1,5 @@
+id	label	history_relative_to_figure	source_path	mode	format	from_file	extra_flags	paper_value	note
+f13_optimized	TraceScope optimized	inputs/rw_10k_key2k_t32	viper_logs/osdi25/cobrabench/fromCobraBenchOriginal/rw_10k_key2k_t32	B_SER	cobra	false	-no_hashmap	6.4s	-
+f13_noreach	No reachability pruning	inputs/rw_10k_key2k_t32	viper_logs/osdi25/cobrabench/fromCobraBenchOriginal/rw_10k_key2k_t32	B_SER	cobra	false	-no_reach -no_hashmap	231.92s	-
+f13_noweight	No priority	inputs/rw_10k_key2k_t32	viper_logs/osdi25/cobrabench/fromCobraBenchOriginal/rw_10k_key2k_t32	B_SER	cobra	false	-no_weight -no_hashmap	42.41s	-
+f13_noopt	No optimizations	inputs/rw_10k_key2k_t32	viper_logs/osdi25/cobrabench/fromCobraBenchOriginal/rw_10k_key2k_t32	B_SER	cobra	false	-no_reach -no_weight -no_hashmap	TO	historical solver timeout 1200s

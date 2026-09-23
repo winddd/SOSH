@@ -1,0 +1,16 @@
+NUM_SUBGRAPHS: 3 # the number of subgraphs that the unsat search optimization splits the whole graph into.
+SUB_MATRIX_SIZE: 15000
+# Set SUB_MATRIX_SIZE to 2 for unit tests.
+#SUB_MATRIX_SIZE: 2
+COBRA_COMPATIBLE_MODE: true
+ENABLE_EDGES_REDUCTION: false
+POLYSI_COMPATIBLE_MODE: false
+# Enable multi-round reachability pruning
+MULTIPLE_ROUNDS_PRUNING: false
+# Use manager2 for encoding.
+DISABLE_HASHMAP: false
+DEBUG: false
+# Enable unsat search optimization
+ENABLE_REVERSE_SEARCH: false
+# Inject unsat cores into the trace for evaluation.
+INJECT_UNSATCORE: false

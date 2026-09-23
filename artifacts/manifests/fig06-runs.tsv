@@ -1,0 +1,21 @@
+id	label	history_relative_to_figure	source_path	mode	format	from_file	extra_flags	paper_value	note
+f06_01	Tapir SSER BlindW-T	inputs/tapir_blindw	viper_logs/osdi25/tapir/violations/blindw_original_G1_anomaly	B_SSER	tapir	false	-	1.14s	paper alias for blindw_original_G1_anomaly
+f06_02	Tapir SSER Retwis	inputs/tapir_retwis	viper_logs/osdi25/tapir/violations/G2-anomaly	B_SSER	tapir	false	-	0.63s	paper alias for G2-anomaly
+f06_03	CockroachDB SER BlindW-C	inputs/cockroach_blindw	viper_logs/osdi25/cobrabench/fromCobraBenchOriginal/cockroach/blindw_cock_10k	B_SER	cobra	false	-no_hashmap	4.45s	-
+f06_04	CockroachDB SER TPC-C	inputs/cockroach_tpcc	viper_logs/osdi25/cobrabench/fromCobraBenchOriginal/cockroach/tpcc_cock_10k	B_SER	cobra	false	-no_hashmap	18.54s	-
+f06_05	PostgreSQL SER RUBiS	inputs/postgresql_rubis	viper_logs/osdi25/cobrabench/fromCobraBenchOriginal/rubis_10k	B_SER	cobra	false	-no_hashmap	2.81s	-
+f06_06	PostgreSQL SER Twitter	inputs/postgresql_twitter	viper_logs/osdi25/cobrabench/fromCobraBenchOriginal/twitter_10k	B_SER	cobra	false	-no_hashmap	2.43s	-
+f06_07	YugabyteDB SER BlindW-C	inputs/yugabyte_ser_blindw	viper_logs/osdi25/cobrabench/fromCobraBenchOriginal/yuga_ser/blindw_yugabyte	B_SER	cobra	false	-no_hashmap	4.40s	-
+f06_08	YugabyteDB SER TPC-C	inputs/yugabyte_ser_tpcc	viper_logs/osdi25/cobrabench/fromCobraBenchOriginal/yuga_ser/tpcc_yuga_15k	B_SER	cobra	false	-no_hashmap	10.65s	-
+f06_09	TiKV SI JuiceFS	inputs/tikv_juicefs	viper_logs/osdi25/juicefs/juicefs_tikv	B_SI	juicefs	false	-	10.03s	historical snapshot is canonical
+f06_10	TiKV SI RandomBench	inputs/tikv_randombench	viper_logs/osdi26/compare_with_si_baselines/tikv_20251206_152441/RANDOM_10000txn_8op_24threads_D5_P25_R25_RMW25_RANGE10_ITER10_IsolationSI	B_SI	binary	false	-	370.81s	history-adjacent result is canonical
+f06_11	YugabyteDB SI RUBiS	inputs/yugabyte_si_rubis	viper_logs/osdi25/cobrabench/fromCobraBenchOriginal/yuga_si/rubis_yuga_si_10k	B_SI	cobra	false	-no_hashmap	4.08s	-
+f06_12	YugabyteDB SI Twitter	inputs/yugabyte_si_twitter	viper_logs/osdi25/cobrabench/fromCobraBenchOriginal/yuga_si/twitter_yuga_si_10k	B_SI	cobra	false	-no_hashmap	4.42s	-
+f06_13	TiDB SI RandomRange	inputs/tidb_randomrange	viper_logs/osdi26/various_configs/tidb_random_range_10k_used/RANDOM_10000txn_8op_24threads_D5_P25_R25_RMW25_RANGE20_ITER0_IsolationSI	B_SI	binary	false	-ryow MUST_RYOW	16.76s	stdout is canonical
+f06_14	MariaDB RR BlindW	inputs/mariadb_rr	viper_logs/osdi26/various_configs/mariadb_20251209_154436/RANDOM_10000txn_8op_24threads_D0_P50_R50_RMW0_RANGE0_ITER0_IsolationRR	B_PL299	binary	false	-	3.25s	-
+f06_15	MySQL RR BlindW	inputs/mysql_rr	viper_logs/osdi26/various_configs/mysql_20251209_154223/RANDOM_10000txn_8op_24threads_D0_P50_R50_RMW0_RANGE0_ITER0_IsolationRR	B_PL299	binary	false	-	2.47s	historical run reported a chain warning
+f06_16	Port PL2+ BlindW-E	inputs/eiger/Eiger_PORT_12t_500k	git_repos/Boomslang/Eiger_PORT_12t_500k	B_PL2P	eiger	false	-	0.20s	prefix has _I.txt and _RW.txt
+f06_17	PostgreSQL RC BlindW-C	inputs/postgresql_rc_blindw	viper_logs/osdi25/cobrabench/fromCobraBenchOriginal/psql_10k_rc/blindw_psql_10k_rc	B_RC	cobra	false	-no_hashmap	2.99s	-
+f06_18	PostgreSQL RC TPC-C	inputs/postgresql_rc_tpcc	viper_logs/osdi25/cobrabench/fromCobraBenchOriginal/psql_10k_rc/tpcc_psql_10k_rc	B_RC	cobra	false	-no_hashmap	5.94s	-
+f06_19	MariaDB RC BlindW	inputs/mariadb_rc	viper_logs/osdi26/various_configs/mariadb_20251209_153740/RANDOM_10000txn_8op_24threads_D0_P50_R50_RMW0_RANGE0_ITER0_IsolationRC	B_RC	binary	false	-	5.33s	-
+f06_20	MySQL RC BlindW	inputs/mysql_rc	viper_logs/osdi26/various_configs/mysql_20251209_153808/RANDOM_10000txn_8op_24threads_D0_P50_R50_RMW0_RANGE0_ITER0_IsolationRC	B_RC	binary	false	-	5.63s	-

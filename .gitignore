@@ -1,0 +1,94 @@
+# Compiled class file
+*.class
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+# Allow Gradle wrapper JAR (required for CI/CD)
+!gradle/wrapper/gradle-wrapper.jar
+# Allow MonoSAT Java library (required for CI/CD)
+!resources/monosat.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+.DS_Store
+*.iml
+*.pyc
+*.uuid
+.idea/
+
+*MANIFEST.MF
+test_logs/
+Eiger_*.txt
+pregraph*.txt
+postpruning_graph*.txt
+key_map*.txt
+txn_map*.txt
+ir_*.txt
+.gradle/
+.vscode/
+app/bk/
+idea*/
+eval/
+txnIdMapping*.txt
+value_map*.txt
+test.json
+# Java build output directories.
+/build/
+/app/build/
+/artifacts/baselines/cobra/source/target/
+/artifacts/baselines/polysi/source/build/
+pkg/
+*.log
+*.txt
+*.json
+*.html
+*.txt
+bk/
+docker/*
+# Allow MonoSAT native library (required for CI/CD)
+!docker/lib/
+!docker/lib/libmonosat.so
+*.png
+
+# Resources and documentation files that shouldn't be in git
+resources/jdk-*.deb
+resources/monosat.tgz
+*.pdf
+# Don't track yaml files except for essential configs
+*.yaml
+!default_config.yaml
+!config.yaml
+run_conf
+test_gnf_debug.java
+app/src/main/java/ND4JExample.java
+app/src/main/java/solvers/BatchMonoSATGraph.java
+app/src/test/java/solvers/BatchMonoSATGraphTest.java
+
+
+# Persistent containerized Gradle cache.
+/.artifact-cache/
+
+# Local source provenance notes.
+/app/OSDI26_FREEZE_SOURCE.md
+
+# Local source snapshots used for comparison experiments.
+/bk/
+/bk2/
+
+# Local test histories and generated logs.
+/test_logs/
+
+# Local artifact data release archive.
+/SOSH-artifacts-data.tgz

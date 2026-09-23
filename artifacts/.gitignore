@@ -1,0 +1,35 @@
+# The repository-level .gitignore excludes all Markdown and text files.
+# Re-include the artifact documentation/manifests while keeping generated run
+# products out of version control.
+!README.md
+!manifests/*.md
+!manifests/*.tsv
+!manifests/*.txt
+!manifests/README.md
+!baselines/
+!baselines/**
+
+# Generated baseline run logs.
+baselines/**/historical/*.log
+
+# Ignore baseline build output; required prebuilt JARs are already tracked.
+baselines/cobra/source/target/
+
+# Experiment inputs and recovered paper references remain local.
+data/
+data_with_reference/
+
+results/*
+!results/.gitkeep
+!results/README.md
+
+# Keep Figure 16-19 reproduction files local and untracked.
+manifests/fig17-runs.tsv
+manifests/fig18-runs.tsv
+manifests/fig19-runs.tsv
+scripts/derive-fig18.py
+scripts/reproduce-fig17-18.sh
+scripts/reproduce-fig19.sh
+scripts/reproduce-fig19-cobra.sh
+scripts/reproduce-fig19-viper.sh
+scripts/reproduce-fig19-polysi.sh

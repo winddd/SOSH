@@ -1,0 +1,19 @@
+id	figure	label	paper_value	note
+f10_cobra_tpcc	fig10	Cobra TPC-C	0.6s	Figure 10 origin baseline
+f10_cobra_twitter	fig10	Cobra Twitter	2.9s	Figure 10 origin baseline
+f10_cobra_rubis	fig10	Cobra RUBiS	2.9s	Figure 10 origin baseline
+f10_cobra_blindw	fig10	Cobra BlindW-C	8.3s	Figure 10 origin baseline
+f11_viper_tpcc	fig11	Viper TPC-C	44.3s	Figure 11 origin baseline
+f11_viper_blindw	fig11	Viper BlindW-C	TO	600-second timeout in paper
+f11_viper_rubis	fig11	Viper RUBiS	TO	600-second timeout in paper
+f11_viper_twitter	fig11	Viper Twitter	TO	600-second timeout in paper
+f11_polysi_tpcc	fig11	PolySI TPC-C	OOM	N/A bar; paper text says OOM
+f11_polysi_blindw	fig11	PolySI BlindW-C	133.3s	Figure 11 origin baseline
+f11_polysi_rubis	fig11	PolySI RUBiS	109.4s	Figure 11 origin baseline
+f11_polysi_twitter	fig11	PolySI Twitter	234.6s	Figure 11 origin baseline
+f19_polysi_10k	fig19	Original PolySI 10K	4.58s	Figure 19 origin baseline
+f19_polysi_50k	fig19	Original PolySI 50K	155.50s	Figure 19 origin baseline
+f19_cobra_10k	fig19	Original Cobra 10K	8.28s	Figure 19 origin baseline
+f19_cobra_50k	fig19	Original Cobra 50K	N/A	GPU memory limit in paper
+f19_viper_10k	fig19	Original Viper 10K	111.00s	Figure 19 origin baseline
+f19_viper_50k	fig19	Original Viper 50K	TO	Figure 19 origin baseline

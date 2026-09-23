@@ -1,0 +1,5 @@
+id	label	history_relative_to_figure	source_path	mode	format	from_file	extra_flags	paper_value	note
+f11_blindw	BlindW-C	inputs/yuga_si_blindw_50k	viper_logs/osdi26/cobrabench/yuga_si/yuga_si_blindw_50k	B_SI	cobra	false	-no_hashmap	104.64s	-
+f11_rubis	RUBiS	inputs/yuga_si_rubis_50k	viper_logs/osdi26/cobrabench/yuga_si/yuga_si_rubis_50k	B_SI	cobra	false	-no_hashmap	78.87s	-
+f11_twitter	Twitter	inputs/yuga_si_twitter_50k	viper_logs/osdi26/cobrabench/yuga_si/yuga_si_twitter_50k	B_SI	cobra	false	-no_hashmap	117.22s	-
+f11_tpcc	TPC-C	inputs/yuga_si_tpcc_50k	viper_logs/osdi26/cobrabench/yuga_si/yuga_si_tpcc_50k	B_SI	cobra	false	-no_hashmap	OOM	TraceScope did not complete in paper

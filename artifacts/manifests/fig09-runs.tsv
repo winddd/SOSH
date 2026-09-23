@@ -1,0 +1,17 @@
+id	label	history_relative_to_figure	source_path	mode	format	from_file	extra_flags	paper_value	note
+f09_10k_v	10K Viper-compatible	inputs/rw_10k	viper_logs/osdi25/cobrabench/fromCobraBenchOriginal/rw_10k	V	cobra	false	-no_hashmap	4.58s	-
+f09_10k_p	10K PolySI-compatible	inputs/rw_10k	viper_logs/osdi25/cobrabench/fromCobraBenchOriginal/rw_10k	P	cobra	false	-no_hashmap	3.72s	-
+f09_20k_v	20K Viper-compatible	inputs/rw_20k	viper_logs/osdi25/cobrabench/fromCobraBenchOriginal/rw_20k	V	cobra	false	-no_hashmap	13.59s	-
+f09_20k_p	20K PolySI-compatible	inputs/rw_20k	viper_logs/osdi25/cobrabench/fromCobraBenchOriginal/rw_20k	P	cobra	false	-no_hashmap	11.77s	-
+f09_30k_v	30K Viper-compatible	inputs/rw_30k	viper_logs/osdi25/cobrabench/fromCobraBenchOriginal/rw_30k	V	cobra	false	-no_hashmap	27.17s	-
+f09_30k_p	30K PolySI-compatible	inputs/rw_30k	viper_logs/osdi25/cobrabench/fromCobraBenchOriginal/rw_30k	P	cobra	false	-no_hashmap	27.99s	-
+f09_40k_v	40K Viper-compatible	inputs/rw_40k	viper_logs/osdi25/cobrabench/fromCobraBenchOriginal/rw_40k	V	cobra	false	-no_hashmap	44.54s	-
+f09_40k_p	40K PolySI-compatible	inputs/rw_40k	viper_logs/osdi25/cobrabench/fromCobraBenchOriginal/rw_40k	P	cobra	false	-no_hashmap	46.28s	-
+f09_50k_v	50K Viper-compatible	inputs/rw_50k	viper_logs/osdi25/cobrabench/fromCobraBenchOriginal/rw_50k	V	cobra	false	-no_hashmap	68.49s	-
+f09_50k_p	50K PolySI-compatible	inputs/rw_50k	viper_logs/osdi25/cobrabench/fromCobraBenchOriginal/rw_50k	P	cobra	false	-no_hashmap	77.79s	-
+f09_60k_v	60K Viper-compatible	inputs/rw_60k	viper_logs/osdi25/cobrabench/fromCobraBenchOriginal/rw_60k	V	cobra	false	-no_hashmap	99.52s	-
+f09_60k_p	60K PolySI-compatible	inputs/rw_60k	viper_logs/osdi25/cobrabench/fromCobraBenchOriginal/rw_60k	P	cobra	false	-no_hashmap	126.64s	-
+f09_70k_v	70K Viper-compatible	inputs/rw_70k	viper_logs/osdi25/cobrabench/fromCobraBenchOriginal/rw_70k	V	cobra	false	-no_hashmap	127.23s	-
+f09_70k_p	70K PolySI-compatible	inputs/rw_70k	viper_logs/osdi25/cobrabench/fromCobraBenchOriginal/rw_70k	P	cobra	false	-no_hashmap	176.82s	-
+f09_80k_v	80K Viper-compatible	inputs/rw_80k	viper_logs/osdi25/cobrabench/fromCobraBenchOriginal/rw_80k	V	cobra	false	-no_hashmap	171.33s	-
+f09_80k_p	80K PolySI-compatible	inputs/rw_80k	viper_logs/osdi25/cobrabench/fromCobraBenchOriginal/rw_80k	P	cobra	false	-no_hashmap	233.32s	-

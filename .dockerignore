@@ -1,0 +1,8 @@
+.git
+.gradle
+.artifact-cache
+app/build
+artifacts/data
+artifacts/results
+*.iml
+.idea

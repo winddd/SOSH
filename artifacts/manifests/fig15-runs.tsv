@@ -1,0 +1,19 @@
+id	label	history_relative_to_figure	source_path	mode	format	from_file	extra_flags	paper_value	note
+f15_cock_blog	Cobra cock-blog	inputs/cock-blog	viper_logs/osdi26/violations/CobraLogs/ser-violation/cock-blog	B_SER	cobra	false	-	0.05s	repo result says 0.01s
+f15_cock_g2	Cobra cock-G2	inputs/cock-G2	viper_logs/osdi26/violations/CobraLogs/ser-violation/cock-G2	B_SER	cobra	false	-	0.08s	-
+f15_fauna	Cobra fauna-page	inputs/fauna-page	viper_logs/osdi26/violations/CobraLogs/ser-violation/fauna-page	B_SER	cobra	false	-	14.05s	-
+f15_yuga_disw	Cobra yuga-disW-a	inputs/yuga-disW-a	viper_logs/osdi26/violations/CobraLogs/ser-violation/yuga-disW-a	B_SER	cobra	false	-	25.55s	-
+f15_yuga_g2a	Cobra yuga-G2-a	inputs/yuga-G2-a	viper_logs/osdi26/violations/CobraLogs/ser-violation/yuga-G2-a	B_SER	cobra	false	-	1.60s	shown representative
+f15_lost_update	Elle lost update	inputs/elle-lost-update	viper_logs/osdi26/violations/elle_violations/history2-4-1-1-lost-updates	B_SI	edn	true	-	0.28s	-
+f15_aborted_read	Elle aborted read	inputs/elle-aborted-read	viper_logs/osdi26/violations/elle_violations/history3-4-1-2-aborted-read	B_SI	edn	true	-	0.08s	-
+f15_cyclic	Elle cyclic information	inputs/elle-cyclic	viper_logs/osdi26/violations/elle_violations/history4-4-6-cyclic-information	B_SI	edn	true	-	0.07s	-
+f15_future_read	Elle future read	inputs/elle-future-read	viper_logs/osdi26/violations/elle_violations/history5-4-7-read-ur-future-writes	B_SI	edn	true	-	0.14s	-
+f15_tidb_skew	Elle TiDB skew	inputs/elle-tidb-skew	viper_logs/osdi26/violations/elle_violations/tidb-history1-read-skew	B_SI	edn	true	-	0.20s	-
+f15_plume_antidote	Plume Antidote	inputs/plume-antidote/T1.log	viper_logs/osdi26/violations/plume_history/History/bugs/antidote/T1.log	B_PL2P	plume	false	-	0.03s	-
+f15_plume_maria	Plume MariaDB	inputs/plume-maria/T1.log	viper_logs/osdi26/violations/plume_history/History/bugs/maria/T1.log	B_SI	plume	false	-	0.16s	-
+f15_plume_yuga	Plume YugabyteDB	inputs/plume-yuga/T1.log	viper_logs/osdi26/violations/plume_history/History/bugs/yugabyte/T1.log	B_SI	plume	false	-	0.05s	-
+f15_tapir_3clients	Tapir 3 clients	inputs/tapir/3_clients_bug.txt	viper_logs/osdi26/violations/tapir/violations/3_clients_bug.txt	B_SER	plume	true	-	0.07s	-
+f15_tapir_4clients	Tapir 4 clients	inputs/tapir/4_clients_bug.txt	viper_logs/osdi26/violations/tapir/violations/4_clients_bug.txt	B_SER	plume	true	-	0.06s	-
+f15_tapir_g1	Tapir G1 anomaly	inputs/tapir-g1	viper_logs/osdi26/violations/tapir/violations/blindw_original_G1_anomaly	B_SER	tapir	false	-	0.68s	-
+f15_tapir_g2	Tapir G2 anomaly	inputs/tapir-g2	viper_logs/osdi26/violations/tapir/violations/G2-anomaly	B_SER	tapir	false	-	0.66s	-
+f15_tapir_rt	Tapir real-time inversion	inputs/tapir-rt	viper_logs/osdi26/violations/tapir/violations/RealTimeInversion_usedinpaper	B_SSER	tapir	false	-	0.05s	-

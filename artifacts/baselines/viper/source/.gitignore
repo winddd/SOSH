@@ -1,0 +1,8 @@
+*.idea/
+*.pyc
+venv/
+history_data/
+history_data2/
+*.uuid
+*.uuid*
+*__pyche__/

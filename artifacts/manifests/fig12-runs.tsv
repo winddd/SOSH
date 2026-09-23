@@ -1,0 +1,7 @@
+id	label	history_relative_to_figure	source_path	mode	format	from_file	extra_flags	paper_value	note
+f12_500	500 seconds	inputs/stolon_500s	git_repos/Boomslang_series/jepsen/stolon/store/stolon_append_2/20250918T215328.449-0400_500s	B_SER	edn	false	-no_hashmap	2.00s	-
+f12_1000	1000 seconds	inputs/stolon_1000s	git_repos/Boomslang_series/jepsen/stolon/store/stolon_append_2/20250918T194519.411-0400_1000s	B_SER	edn	false	-no_hashmap	3.67s	-
+f12_1500	1500 seconds	inputs/stolon_1500s	git_repos/Boomslang_series/jepsen/stolon/store/stolon_append_2/20250918T220215.542-0400_1500s	B_SER	edn	false	-no_hashmap	6.50s	-
+f12_2000	2000 seconds	inputs/stolon_2000s	git_repos/Boomslang_series/jepsen/stolon/store/stolon_append_2/20250918T200227.497-0400_2000s	B_SER	edn	false	-no_hashmap	9.03s	-
+f12_2500	2500 seconds	inputs/stolon_2500s	git_repos/Boomslang_series/jepsen/stolon/store/stolon_append_2/20250918T222742.726-0400_2500s	B_SER	edn	false	-no_hashmap	10.82s	-
+f12_3000	3000 seconds	inputs/stolon_3000s	git_repos/Boomslang_series/jepsen/stolon/store/stolon_append_2/20250918T203617.450-0400_3000s	B_SER	edn	false	-no_hashmap	12.58s	-

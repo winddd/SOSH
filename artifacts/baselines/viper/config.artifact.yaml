@@ -1,0 +1,10 @@
+PREFIX: &prefix "/data"
+LOG_DIR: "/data"
+GRAPH_DIR: "/tmp/viper/graphs"
+ANALYSIS_DIR: "/tmp/viper/analysis"
+
+DEBUG: false
+REGENERATE: true
+HASFINAL: false
+ALGO: 6
+

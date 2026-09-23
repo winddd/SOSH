@@ -1,0 +1,5 @@
+id	label	history_relative_to_figure	source_path	mode	format	from_file	extra_flags	paper_value	note
+f10_tpcc	TPC-C	inputs/tpcc_10k	viper_logs/osdi25/cobrabench/fromCobraBenchOriginal/tpcc_10k	B_SER	cobra	false	-no_hashmap	3.5s	TraceScope only
+f10_twitter	Twitter	inputs/twitter_10k	viper_logs/osdi25/cobrabench/fromCobraBenchOriginal/twitter_10k	B_SER	cobra	false	-no_hashmap	2.5s	TraceScope only
+f10_blindw	BlindW-C	inputs/rw_10k	viper_logs/osdi25/cobrabench/fromCobraBenchOriginal/rw_10k	B_SER	cobra	false	-no_hashmap	4.2s	TraceScope only
+f10_rubis	RUBiS	inputs/rubis_10k	viper_logs/osdi25/cobrabench/fromCobraBenchOriginal/rubis_10k	B_SER	cobra	false	-no_hashmap	2.9s	TraceScope only
