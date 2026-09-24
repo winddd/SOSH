@@ -18,7 +18,6 @@ java_cmd=(
   java
   "-Xmx${JAVA_HEAP:-16g}"
   -Djava.library.path=/usr/local/lib
-  -ea
   -Dlog4j.configurationFile=/opt/boomslang/log4j2.xml
 )
 

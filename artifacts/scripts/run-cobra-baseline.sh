@@ -47,7 +47,7 @@ docker run --rm \
   --env "TIME_LOG=/results/${run_name}.time.txt" \
   --entrypoint bash \
   "${image}" \
-  -c 'exec /usr/bin/time -v -o "$TIME_LOG" timeout "$TIMEOUT" java -ea -Djava.library.path=/opt/baselines/cobra/include -jar /opt/baselines/cobra/cobra.jar mono audit /opt/baselines/cobra/cobra.conf.default "$1"' \
+  -c 'exec /usr/bin/time -v -o "$TIME_LOG" timeout "$TIMEOUT" java -Djava.library.path=/opt/baselines/cobra/include -jar /opt/baselines/cobra/cobra.jar mono audit /opt/baselines/cobra/cobra.conf.default "$1"' \
   _ "/data/${history_name}" 2>&1 | tee "${results_dir}/${run_name}.stdout.log"
 run_status=${PIPESTATUS[0]}
 set -e
