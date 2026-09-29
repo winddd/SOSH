@@ -11,6 +11,7 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.BiFunction;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.google.common.collect.BiMap;
@@ -51,14 +52,22 @@ public class EigerParser implements Parser {
     return new Key(s.getBytes(StandardCharsets.US_ASCII));
   }
 
+  private static Matcher requireMatch(Pattern pattern, String line) {
+    var matcher = pattern.matcher(line == null ? "" : line);
+    if (!matcher.find()) {
+      throw new InvalidInputException(
+          String.format("Eiger log line does not match %s: %s", pattern.pattern(), line));
+    }
+    return matcher;
+  }
+
   private void processInsertOperation(BufferedReader br, Map<Key, Key> initWrites) throws IOException {
     String line;
     KVTxn currentTxn = null;
     int threadId = -1;
     // Read keys and their columns
     while ((line = br.readLine()) != null && !line.isEmpty()) {
-      var threadMatcher = THREAD_ID_PATTERN.matcher(line);
-      assert threadMatcher.find();
+      var threadMatcher = requireMatch(THREAD_ID_PATTERN, line);
       threadId = Integer.parseInt(threadMatcher.group(1));
       threadId += 100; // avoid conflict with RW threads
       // Start new transaction
@@ -66,8 +75,7 @@ public class EigerParser implements Parser {
       currentTxn.setStatus(KVTxn.TransactionStatus.ONGOING);
 
       line = br.readLine();
-      var keyMatcher = KEY_PATTERN.matcher(line);
-      assert keyMatcher.find();
+      var keyMatcher = requireMatch(KEY_PATTERN, line);
 //      if (keyMatcher.find()) {
         var keyStr = keyMatcher.group(1);
         var key = Codec.encodeLong(Long.parseLong(keyStr));
@@ -97,8 +105,7 @@ public class EigerParser implements Parser {
                                 BiFunction<Key, Key, KvOperation> operationFactory,
                                 Map<Key, Key> initWrites) throws IOException {
     String line = br.readLine();
-    var threadMatcher = THREAD_ID_PATTERN.matcher(line);
-    assert threadMatcher.find();
+    var threadMatcher = requireMatch(THREAD_ID_PATTERN, line);
     int threadId = Integer.parseInt(threadMatcher.group(1));
 
     // Start new transaction
@@ -112,8 +119,7 @@ public class EigerParser implements Parser {
 
     // Read keys and their columns
     while ((line = br.readLine()) != null && !line.isEmpty()) {
-      var keyMatcher = KEY_PATTERN.matcher(line);
-      assert keyMatcher.find();
+      var keyMatcher = requireMatch(KEY_PATTERN, line);
 
       var keyStr = keyMatcher.group(1);
       var key = Codec.encodeLong(Long.parseLong(keyStr));
