@@ -110,6 +110,11 @@ def final_status(row: dict[str, Any]) -> str:
         return "timeout"
     if row.get("signal"):
         return f"signal_{row['signal']}"
+    # Written by TraceScope itself: its solver timeout (-timeout) or a crash.
+    if row.get("result") == "TIMEOUT":
+        return "timeout"
+    if row.get("result") == "ERROR":
+        return "error"
     if row.get("exit_status") not in (None, 0):
         return f"exit_{row['exit_status']}"
     if row.get("verdict") in ("SAT", "UNSAT", "ACCEPT", "REJECT"):

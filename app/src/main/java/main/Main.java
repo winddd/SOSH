@@ -16,6 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 import util.Config;
 import util.Context;
 import util.Utils;
+import util.Verdict;
 import util.enumtypes.HISTORY_FORMAT;
 import util.enumtypes.MODE;
 import util.enumtypes.SMT_SOLVER;
@@ -282,8 +283,11 @@ public class Main {
       log.info("Starting Boomslang with arguments: {}", Arrays.toString(args));
       var cfg = cmdParse(args);
       Context ctx = new Context(cfg.DEBUG);
-      KVMain.kvMain(ctx, cfg);
-      log.info("Boomslang completed successfully");
+      Verdict verdict = KVMain.kvMain(ctx, cfg);
+      log.info("Boomslang completed with {}", verdict);
+      if (verdict.exitCode() != 0) {
+        System.exit(verdict.exitCode());
+      }
     } catch (Exception e) {
       log.error("Boomslang failed", e);
       System.exit(1);

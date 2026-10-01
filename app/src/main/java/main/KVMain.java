@@ -27,6 +27,7 @@ import tools.anomaly_injector.ChengUnsatCoreInjector;
 import util.Config;
 import util.Context;
 import util.Profiler;
+import util.Verdict;
 import util.exception.RejectException;
 
 /**
@@ -87,7 +88,7 @@ public class KVMain {
    * <ul>
    *   <li>{@link RejectException}: Indicates UNSAT (isolation violation detected early)</li>
    *   <li>{@link TimeoutException}: Solver timeout - profiling data for completed phases is still saved</li>
-   *   <li>Other exceptions: Logged and treated as errors (result may be undefined)</li>
+   *   <li>Other exceptions: Logged and reported as {@link Verdict#ERROR}, never as SAT</li>
    * </ul>
    *
    * <p><b>Profiling on Timeout:</b>
@@ -98,9 +99,10 @@ public class KVMain {
    *
    * @param ctx execution context containing runtime information
    * @param cfg configuration specifying isolation level, input format, optimizations, etc.
-   * @return {@code true} if SAT (history satisfies isolation level), {@code false} if UNSAT or timeout
+   * @return {@link Verdict#SAT} or {@link Verdict#UNSAT}; {@link Verdict#TIMEOUT} or
+   *     {@link Verdict#ERROR} when the run produced no verdict
    */
-  public static boolean kvMain(Context ctx, Config cfg) {
+  public static Verdict kvMain(Context ctx, Config cfg) {
     // Config cfg = cfg;
     log.info("Config: " + cfg.toString());
     Profiler profiler = Profiler.getInstance();
@@ -115,7 +117,8 @@ public class KVMain {
     System.out.printf(checkMessasge);
     log.info(checkMessasge);
 
-    boolean sat = true;
+    // Stays ERROR unless a branch below reaches a verdict, so a crash is never reported as SAT.
+    Verdict verdict = Verdict.ERROR;
     // ReverseSearch reverseThread;
     // NormalSearch normalThread;
     int id = -1;
@@ -137,7 +140,7 @@ public class KVMain {
       // (no isolation constraints to check)
       if (cfg.RUNMODE.getIsolationLevel() == util.enumtypes.ISOLATION_LEVEL.READ_UNCOMMITTED) {
         log.info("Read Uncommitted: ASG built successfully, returning SAT without graph compilation");
-        sat = true;
+        verdict = Verdict.SAT;
         id = 1;
         // Skip to cleanup and return (at end of method)
       } else {
@@ -222,11 +225,11 @@ public class KVMain {
           profiler.putTagRuntime(tag, tag2Time.get(tag));
         }
 
-        sat = searchResult.isSat();
+        verdict = searchResult.isSat() ? Verdict.SAT : Verdict.UNSAT;
         id = searchResult.getId();
       }
     } catch (RejectException e) {
-      sat = false;
+      verdict = Verdict.UNSAT;
       id = 1;
        e.printStackTrace(); // for debugging
     } catch (CompletionException e) {
@@ -240,27 +243,31 @@ public class KVMain {
         // even though the solver threads timed out
         profiler.mergeAllThreadProfilers();
 
-        sat = false;  // Treat timeout as UNSAT (unknown result)
-        id = -1;      // -1 indicates timeout
+        verdict = Verdict.TIMEOUT;
+        id = -1;
       } else {
+        verdict = Verdict.ERROR;
+        id = -1;
         System.out.println("Exception: " + e.getMessage());
          e.printStackTrace(); // for debugging
       }
     } catch (Exception | Error e) {
+      verdict = Verdict.ERROR;
+      id = -1;
       System.out.println("Exception: " + e.getMessage());
        e.printStackTrace(); // for debugging
     }
 
     // Cleanup and return
-    System.out.printf("%d: %b\n", id, sat);
+    System.out.printf("%d: %s\n", id, verdict.resultLineValue());
     profiler.endAll();
     profiler.recordResults();
-    profiler.printProfilingResults(cfg.PERF_FILE, cfg.EXP_NAME, sat);
+    profiler.printProfilingResults(cfg.PERF_FILE, cfg.EXP_NAME, verdict);
 
     // Save results to history folder
-    saveResultsToHistoryFolder(cfg, sat, id, profiler);
+    saveResultsToHistoryFolder(cfg, verdict, id, profiler);
 
-    return sat;
+    return verdict;
   }
 
   /**
@@ -271,11 +278,12 @@ public class KVMain {
    * the transaction logs.
    *
    * @param cfg configuration containing history folder path
-   * @param sat whether the history satisfies the isolation level
-   * @param id result identifier (-1 for timeout, 1 for early rejection, etc.)
+   * @param verdict outcome of the run
+   * @param id result identifier (-1 for timeout or error, 1 for early rejection, etc.)
    * @param profiler profiler instance containing timing statistics
    */
-  private static void saveResultsToHistoryFolder(Config cfg, boolean sat, int id, Profiler profiler) {
+  private static void saveResultsToHistoryFolder(Config cfg, Verdict verdict, int id,
+                                                 Profiler profiler) {
     try {
       String historyPath = cfg.HISTORY_FOLDER;
       java.io.File historyFile = new java.io.File(historyPath);
@@ -307,8 +315,9 @@ public class KVMain {
       // Generate JSON content
       String runtimeStats = profiler.getRuntimeStatistics().replace("\n", "");
       String json = String.format(
-          "{\n  \"sat\": %b,\n  \"id\": %d,\n  \"isolation_level\": \"%s\",\n  \"format\": \"%s\",\n  \"fromFile\": %b,\n  \"history_path\": \"%s\",\n  \"timing\": %s\n}\n",
-          sat,
+          "{\n  \"sat\": %s,\n  \"result\": \"%s\",\n  \"id\": %d,\n  \"isolation_level\": \"%s\",\n  \"format\": \"%s\",\n  \"fromFile\": %b,\n  \"history_path\": \"%s\",\n  \"timing\": %s\n}\n",
+          verdict.satOrNull(),
+          verdict.name(),
           id,
           cfg.RUNMODE.getIsolationLevel().name(),
           cfg.H_FORMAT.name(),
