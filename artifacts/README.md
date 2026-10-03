@@ -77,9 +77,9 @@ Pass IDs from `artifacts/manifests/fig06-runs.tsv` to run selected rows:
 artifacts/scripts/reproduce-fig06.sh f06_03 f06_04
 ```
 
-Result: `artifacts/results/fig06.csv`.
+Result: `artifacts/results/fig06.csv`.  
 Raw results: `artifacts/results/f06_XX.{stdout.log,time.txt}`. You may refer to  `.stdout.log` for  the standard output.
-
+The `.csv` file is provided only for a quick overview of the results. For the most accurate and complete results, please refer to the raw output files: `artifacts/results/f06_XX.{stdout.log,time.txt}`. This applies to all figures.
 
 The transaction count reported for CockroachDB TPC-C in Figure 6 was corrected from  18.2K  to  17.3K. The original TiKV JuiceFS history could not be recovered, so we reran the experiment using another JuiceFS history with 5.8K transactions. The artifact reports the results of these reruns.
 
