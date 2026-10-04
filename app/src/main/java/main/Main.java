@@ -108,6 +108,13 @@ public class Main {
             .hasArg(false)
             .desc("Disable reachability pruning")
             .build())
+        .addOption(Option.builder("multi_round_pruning")
+            .longOpt("multiple_rounds_pruning")
+            .hasArg()
+            .optionalArg(true)
+            .argName("true|false")
+            .desc("Override MULTIPLE_ROUNDS_PRUNING from the config file (no value means true)")
+            .build())
         .addOption(Option.builder("no_hashmap")
             .longOpt("disable_hashmap")
             .hasArg(false)
@@ -199,6 +206,14 @@ public class Main {
       }
     }
 
+    if (cmd.hasOption("multi_round_pruning")) {
+      String value = cmd.getOptionValue("multi_round_pruning", "true");
+      if (!value.equalsIgnoreCase("true") && !value.equalsIgnoreCase("false")) {
+        throw new IllegalArgumentException("Invalid multi_round_pruning value: " + value
+            + ". Valid values are: true, false");
+      }
+    }
+
     if (cmd.hasOption("ryow")) {
       String ryowPolicy = cmd.getOptionValue("ryow").toUpperCase();
       if (!VALID_RYOW_POLICIES.contains(ryowPolicy)) {
@@ -252,6 +267,11 @@ public class Main {
       cfg.set("DISABLE_INITIALTXN", cmd.hasOption("disable_t0"));
       cfg.set("EXPECTED_ORDER", cmd.hasOption("expected_order"));
       cfg.set("HINTS_COMPATIBLE_MODE", cmd.hasOption("hcm"));
+      // Only override the config file when the flag is given.
+      if (cmd.hasOption("multi_round_pruning")) {
+        cfg.set("MULTIPLE_ROUNDS_PRUNING",
+            Boolean.parseBoolean(cmd.getOptionValue("multi_round_pruning", "true")));
+      }
 
       if (cmd.hasOption("ryow")) {
         cfg.set("RYOW_POLICY", RYOWPolicy.valueOf(cmd.getOptionValue("ryow").toUpperCase()));
