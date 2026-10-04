@@ -50,7 +50,7 @@ script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 artifact_dir="$(cd "${script_dir}/.." && pwd)"
 results_dir="${RESULTS_DIR:-${artifact_dir}/results}"
 image="${BOOMSLANG_AE_IMAGE:-boomslang-ae:local}"
-heap="${JAVA_HEAP:-16g}"
+heap="${JAVA_HEAP:-18g}"
 memory="${DOCKER_MEMORY:-20g}"
 memory_swap="${DOCKER_MEMORY_SWAP:-${memory}}"
 
