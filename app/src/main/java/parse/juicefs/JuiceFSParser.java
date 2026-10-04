@@ -12,6 +12,7 @@ import parse.juicefs.operation.*;
 import util.Config;
 import util.Context;
 import util.Profiler;
+import util.exception.InvalidInputException;
 
 import java.io.*;
 import java.nio.file.Paths;
@@ -134,7 +135,8 @@ public class JuiceFSParser implements Parser {
                         }
                             break;
                         default:
-                            assert false;
+                            throw new InvalidInputException(
+                                "Unknown JuiceFS operation type: " + logOp.type);
                     }
                 }
 
