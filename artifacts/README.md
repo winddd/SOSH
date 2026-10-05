@@ -38,23 +38,22 @@ artifacts/scripts/build-image.sh
 artifacts/scripts/smoke-test.sh
 ```
 
-## Java heap configuration
+## Experiment configuration
 
-The paper's TraceScope results were collected on bare metal with a 40 GB Java
-heap (`-Xmx40g`). For artifact runs, use a 64 GB Docker memory limit and the
-same 40 GB Java heap:
+Load the configuration before running scripts:
 
 ```bash
-DOCKER_MEMORY=64g JAVA_HEAP=40g artifacts/scripts/reproduce-fig06.sh
+source artifacts/env.sh.example
 ```
 
-Use the same `DOCKER_MEMORY=64g JAVA_HEAP=40g` prefix for any other figure
-script. The Docker memory-plus-swap
-limit defaults to the same 64 GB value.
+The defaults (18 GB Java heap, 20 GB container memory) are for smoke tests.
+For full experiments, edit the file to set `JAVA_HEAP=40g`,
+`DOCKER_MEMORY=64g`, and `DOCKER_MEMORY_SWAP=64g`, then source it again.
+Alternatively, prefix each figure command:
 
-Running a figure without the prefix uses the reduced-memory artifact setting
-(`-Xmx16g` in a 20 GB container), which is intended for smoke testing rather
-than matching the paper's memory configuration.
+```bash
+JAVA_HEAP=40g DOCKER_MEMORY=64g DOCKER_MEMORY_SWAP=64g artifacts/scripts/reproduce-fig06.sh
+```
 
 ## Note on paper and artifact results
 

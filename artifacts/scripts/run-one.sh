@@ -12,6 +12,24 @@ format="$3"
 run_name="$4"
 shift 4
 
+extra_flags=("$@")
+disable_unsupported_optimizations=false
+case "${mode^^}" in
+  B_PL2P|B_PLCS|B_PLFCV)
+    disable_unsupported_optimizations=true
+    has_no_reach=false
+    has_no_weight=false
+    for flag in "${extra_flags[@]}"; do
+      case "${flag}" in
+        -no_reach|--no_reachability_pruning) has_no_reach=true ;;
+        -no_weight|--no_weight_guided_search) has_no_weight=true ;;
+      esac
+    done
+    [[ "${has_no_reach}" == true ]] || extra_flags+=(-no_reach)
+    [[ "${has_no_weight}" == true ]] || extra_flags+=(-no_weight)
+    ;;
+esac
+
 if [[ -z "${DATA_ROOT:-}" ]]; then
   echo "ERROR: set DATA_ROOT to a copied figure directory under artifacts/data/." >&2
   exit 2
@@ -32,7 +50,7 @@ script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 artifact_dir="$(cd "${script_dir}/.." && pwd)"
 results_dir="${RESULTS_DIR:-${artifact_dir}/results}"
 image="${BOOMSLANG_AE_IMAGE:-boomslang-ae:local}"
-heap="${JAVA_HEAP:-16g}"
+heap="${JAVA_HEAP:-18g}"
 memory="${DOCKER_MEMORY:-20g}"
 memory_swap="${DOCKER_MEMORY_SWAP:-${memory}}"
 
@@ -47,6 +65,9 @@ echo "Image:   ${image}"
 echo "History: ${host_history} -> /data/${history_rel} (read-only)"
 echo "Results: ${results_dir}"
 echo "Limits:  memory=${memory}, memory+swap=${memory_swap}, Java heap=${heap}"
+if [[ "${disable_unsupported_optimizations}" == true ]]; then
+  echo "Mode:    ${mode}; disabling unsupported reachability pruning and weight-guided search"
+fi
 
 container_name="boomslang-ae-${run_name}-$$"
 docker_command=(docker run --rm --name "${container_name}" \
@@ -69,7 +90,7 @@ docker_command=(docker run --rm --name "${container_name}" \
   -run_name "${run_name}" \
   -output "/results/${jsonl}" \
   -session \
-  "$@")
+  "${extra_flags[@]}")
 
 if [[ -n "${RUN_TIMEOUT_SECONDS:-}" ]]; then
   [[ "${RUN_TIMEOUT_SECONDS}" =~ ^[1-9][0-9]*$ ]] || {

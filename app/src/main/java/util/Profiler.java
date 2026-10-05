@@ -144,15 +144,19 @@ public class Profiler {
 
   /**
    * this should be called after calling `endAll`.
+   *
+   * <p>Prints and appends the JSONL result row. {@code "sat"} is {@code null} for TIMEOUT and
+   * ERROR; {@code "result"} is the verdict name.
    */
-  public void printProfilingResults(String perfFile, String expName, boolean sat) {
+  public void printProfilingResults(String perfFile, String expName, Verdict verdict) {
     if (perfFile == null || expName == null)
       return;
     StringBuilder builder = new StringBuilder();
     builder.append("Profiling results: ");
 
     String json = getRuntimeStatistics().replace("\n", "");
-    json = json.replaceFirst("\\{", String.format("\\{\"sat\": %b, ", sat));
+    json = json.replaceFirst("\\{", String.format("\\{\"sat\": %s, \"result\": \"%s\", ",
+        verdict.satOrNull(), verdict.name()));
     json = String.format("{\"%s\": %s}", expName, json);
     builder.append(json);
     System.out.println(builder);

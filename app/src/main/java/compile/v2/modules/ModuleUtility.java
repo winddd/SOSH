@@ -261,7 +261,8 @@ public class ModuleUtility {
             var superposition = new Superposition(es1, es2);
             unknownWwSuperpositions.add(superposition);
           } else {
-            assert false;
+            throw new IllegalStateException(
+                "Both version-order chains contain the initial transaction for key " + key);
           }
 
           // if (unknownWwSuperpositions.size() % 10000 == 0)

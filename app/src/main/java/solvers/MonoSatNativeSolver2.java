@@ -69,6 +69,9 @@ public class MonoSatNativeSolver2 extends SMTSolver {
 
   @Override
   public boolean addConstraint(GeneralizedConstraint con) {
+    throw new NotImplementedException(
+        "MonoSatNativeSolver2 does not support generalized constraints");
+    /*
     assert false;
     var es1 = new ArrayList<>(con.getEdgeSet1());
     var es2 = new ArrayList<>(con.getEdgeSet2());
@@ -103,6 +106,7 @@ public class MonoSatNativeSolver2 extends SMTSolver {
       }
     }
     return false;
+    */
   }
 
   @Override
