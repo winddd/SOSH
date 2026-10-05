@@ -1,12 +1,13 @@
 # TraceScope / Boomslang ATC'26 Artifact
 
-Run all commands from the repository root. Place experiment inputs under
-`artifacts/data/figXX/inputs/`; results are written under
-`artifacts/results/`.
+Run all commands from the repository root. Experiment inputs are under
+`artifacts/data/`; results are written under `artifacts/results/`.
+The reproduction instructions below cover figure experiments first, followed by
+case studies.
 
 ## Download and unpack the experiment data
 
-Git clone this repo and download the data `SOSH-artifacts-data.tgz` from the [Google Drive](https://drive.google.com/file/d/1Q1ySRLVatPaEYgxMcF9IiPc_BsZujugl/view?usp=drive_link) and place it in
+Git clone this repo and download the data `SOSH-artifacts-data.tgz` from the [Google Drive](https://drive.google.com/file/d/139qrRf1QeDPoAc7rm1tJqrqUATafyZMj/view?usp=drive_link) and place it in
 the repository root.
 In the `SOSH` repository root, extract the archive into `artifacts/`:
 
@@ -64,7 +65,9 @@ may differ from the numbers in the submitted paper. We will rerun the full
 evaluation and update the reported numbers in the
 camera-ready version.
 
-## Figure 6
+## Figure experiments
+
+### Figure 6
 
 ```bash
 artifacts/scripts/reproduce-fig06.sh
@@ -82,7 +85,7 @@ The `.csv` file is provided only for a quick overview of the results. For the mo
 
 The transaction count reported for CockroachDB TPC-C in Figure 6 was corrected from  18.2K  to  17.3K. The original TiKV JuiceFS history could not be recovered, so we reran the experiment using another JuiceFS history with 5.8K transactions. The artifact reports the results of these reruns.
 
-## Figure 7
+### Figure 7
 
 ```bash
 artifacts/scripts/reproduce-fig07.sh
@@ -129,7 +132,7 @@ and are not counted as checker-specific LOC. Pruning is now
 parameterized by the one-method `PruningSpec` interface. PL-2+, PL-CS, PL-FCV,
 and RC reuse `DependencyOnlyPruningSpec`. (NOTE: sicne  the  code  evolves, the exact LOC  may  be not exactly the same as the  paper.)
 
-## Figure 8
+### Figure 8
 
 ```bash
 artifacts/scripts/reproduce-fig08.sh
@@ -154,7 +157,7 @@ extra code. The corrected
 implementation is therefore larger, and the artifact reports its current
 798 LOC rather than the pre-fix number in the paper.
 
-## Figure 9
+### Figure 9
 
 ```bash
 artifacts/scripts/reproduce-fig09.sh
@@ -166,7 +169,7 @@ Raw results: artifacts/results/f09_XX.{stdout.log,time.txt}. You may refer to  `
 
 The artifact contains a fix to a bug in PolySI checker in Boomslang/Tracescope that was discovered after the paper submission. The fix reduces PolySI's performance relative to the numbers reported in Fig. 9 of the submitted version. We use the corrected implementation in the artifact, and the corresponding PolySI results will be updated in the camera-ready version. The correction does not affect the qualitative conclusions of Fig. 9.
 
-## Figure 10
+### Figure 10
 
 ```bash
 artifacts/scripts/reproduce-fig10.sh
@@ -177,7 +180,7 @@ result: `artifacts/results/fig10.csv`. And the  results  may  be affected by the
 
 Raw results: artifacts/results/f10_XX.{stdout.log,time.txt}. You may refer to `.stdout.log` for  the standard output.
 
-## Figure 11
+### Figure 11
 
 ```bash
 artifacts/scripts/reproduce-fig11.sh
@@ -188,7 +191,7 @@ This runs TraceScope, Viper, and PolySI. Combined result:
 Raw results: artifacts/results/f11_XX.{stdout.log,time.txt}. You may refer to `.stdout.log` for  the standard output.
 
 
-## Figure 12
+### Figure 12
 
 ```bash
 artifacts/scripts/reproduce-fig12.sh
@@ -206,7 +209,7 @@ Result:
 `artifacts/results/fig12.csv`.
 Raw results: artifacts/results/f12_XX.{stdout.log,time.txt}. 
 
-## Figure 13
+### Figure 13
 
 ```bash
 artifacts/scripts/reproduce-fig13.sh
@@ -220,7 +223,7 @@ Result: `artifacts/results/fig13.csv`.
 Raw results: artifacts/results/f13_XX.{stdout.log,time.txt}. You may refer to `.stdout.log` for  the standard output.
 
 
-## Figure 14
+### Figure 14
 
 ```bash
 artifacts/scripts/reproduce-fig14.sh
@@ -232,7 +235,7 @@ Result: `artifacts/results/fig14.csv`.
 Raw results: artifacts/results/f14_XX.{stdout.log,time.txt}. You may refer to `.stdout.log` for  the standard output.
 
 
-## Figure 15
+### Figure 15
 
 ```bash
 artifacts/scripts/reproduce-fig15.sh
@@ -245,3 +248,13 @@ the `isolation`, `anomaly`, `database`, and `transactions` columns identify the
 corresponding paper row directly. `time_sec` is the reproduced result and
 `paper_time` is the value printed in the paper.
 Raw results: artifacts/results/f15_XX.{stdout.log,time.txt}. You may refer to `.stdout.log` for  the standard output.
+
+## Case studies
+
+See the individual READMEs for details:
+
+- [Case 1: TiDB read-after-update bug](scripts/case01/README.md).
+- [Case 3: JuiceFS](scripts/case03/README.md) (reuses Figure 6 data).
+- [Case 4: MariaDB transaction-splitting customization](scripts/case04/README.md).
+- [Case 5: RYOW policies](scripts/case05/README.md) (source/LOC explanation only).
+- [Case 6: Tapir timestamp inversion](scripts/case06/README.md).
