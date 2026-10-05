@@ -6,20 +6,16 @@ artifact_dir=$(cd "$scripts_dir/.." && pwd)
 
 init_case() {
   case_id=$1; shift
-  dry_run=false
-  if [[ $# == 1 && $1 == --dry-run ]]; then dry_run=true
-  elif [[ $# != 0 ]]; then echo 'Usage: run.sh [--dry-run]' >&2; exit 2; fi
+  [[ $# == 0 ]] || { echo 'Usage: run.sh' >&2; exit 2; }
   export DATA_ROOT="$artifact_dir/data/case-studies"
   export RUN_TIMEOUT_SECONDS="${RUN_TIMEOUT_SECONDS:-600}"
   export FROM_FILE=false
   failures=0
-  if [[ $dry_run == false ]]; then
-    command -v python3 >/dev/null
-    command -v docker >/dev/null
-    mkdir -p "$artifact_dir/results/$case_id"
-    export RESULTS_DIR
-    RESULTS_DIR=$(mktemp -d "$artifact_dir/results/$case_id/run-XXXXXXXX")
-  fi
+  command -v python3 >/dev/null
+  command -v docker >/dev/null
+  mkdir -p "$artifact_dir/results/$case_id"
+  export RESULTS_DIR
+  RESULTS_DIR=$(mktemp -d "$artifact_dir/results/$case_id/run-XXXXXXXX")
 }
 
 binary_history() {
@@ -35,12 +31,6 @@ check_history() {
   local flags=() rc=0
   [[ -d "$DATA_ROOT/$history" ]] || { echo "Missing history: $history" >&2; return 2; }
   [[ $policy == - ]] || flags+=(-ryow "$policy")
-  if [[ $dry_run == true ]]; then
-    printf 'DATA_ROOT=%q RUN_TIMEOUT_SECONDS=%q ' "$DATA_ROOT" "$RUN_TIMEOUT_SECONDS"
-    printf '%q ' "$scripts_dir/run-one.sh" "$history" "$mode" "$format" "$name" "${flags[@]}"
-    printf '\n'
-    return
-  fi
   "$scripts_dir/run-one.sh" "$history" "$mode" "$format" "$name" "${flags[@]}" || rc=$?
   if ! python3 - "$RESULTS_DIR" "$name" "$history" "$mode" "$format" "$policy" "$expected" "$rc" <<'PY'
 import csv
@@ -88,7 +78,6 @@ PY
 }
 
 finish_case() {
-  [[ $dry_run == false ]] || return 0
   echo "Results: $RESULTS_DIR/results.csv"
   echo 'Expected references are not proof of anomaly identity; inspect the actual verdict and log.'
   [[ $failures == 0 ]]
