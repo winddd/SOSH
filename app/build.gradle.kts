@@ -192,7 +192,8 @@ tasks.test {
         useDefaultListeners = true
     }
     jvmArgs = listOf(
-        "-Djava.library.path=/usr/local/lib",
+        // Override with -PmonosatLibDir=DIR, e.g. ../artifacts/lib (relative to app/).
+        "-Djava.library.path=" + (project.findProperty("monosatLibDir") ?: "/usr/local/lib"),
         "-Dlog4j.configurationFile=../log4j2.xml",
         "-Xmx10g",
         "-Xms10g"
