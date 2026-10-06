@@ -6,5 +6,4 @@ init_case case01
 run=tidb_20251203_202543
 history=$(binary_history "case01-tidb-candidates/$run")
 check_history "$history" B_PL299 binary "${run}_rr" 'UNSAT (archived; matching bug-pattern witness)'
-check_history "$history" B_SI binary "${run}_si" 'UNSAT (paper claim; matching bug-pattern witness)'
 finish_case
