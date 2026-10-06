@@ -7,7 +7,7 @@ case studies.
 
 ## Download and unpack the experiment data
 
-Git clone this repo and download the data `SOSH-artifacts-data.tgz` from the [Google Drive](https://drive.google.com/file/d/139qrRf1QeDPoAc7rm1tJqrqUATafyZMj/view?usp=drive_link) and place it in
+Git clone this repo and download the data `SOSH-artifacts-data.tgz` from the [Google Drive](https://drive.google.com/file/d/1nTLyA54aymgV33UopwQRnxTpXV6Kr_GG/view?usp=sharing) and place it in
 the repository root.
 In the `SOSH` repository root, extract the archive into `artifacts/`:
 
