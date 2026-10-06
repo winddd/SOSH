@@ -254,6 +254,7 @@ Raw results: artifacts/results/f15_XX.{stdout.log,time.txt}. You may refer to `.
 See the individual READMEs for details:
 
 - [Case 1: TiDB read-after-update bug](scripts/case01/README.md).
+- [Case 2: PostgreSQL and MariaDB bugs](scripts/case02/README.md).
 - [Case 3: JuiceFS](scripts/case03/README.md) (reuses Figure 6 data).
 - [Case 4: MariaDB transaction-splitting customization](scripts/case04/README.md).
 - [Case 5: RYOW policies](scripts/case05/README.md) (source/LOC explanation only).
