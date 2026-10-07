@@ -1,5 +1,12 @@
 # Boomslang Release
 
+This repository contains Boomslang, the artifact for **Boomslang: A Modular
+Framework for Practical Transaction Isolation Verification** (ACM ATC 2026).
+See [the artifact README](artifacts/README.md) for reproduction instructions.
+
+Boomslang code, documentation, and artifact scripts are licensed under the
+[MIT License](LICENSE).
+
 ## Run the included rw_10k history
 
 This is the raw `boomslang.jar` command for the included `rw_10k` history.
