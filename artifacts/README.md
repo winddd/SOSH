@@ -1,4 +1,13 @@
-# TraceScope / Boomslang ATC'26 Artifact
+# Boomslang / TraceScope ATC'26 Artifact
+
+TraceScope and Boomslang refer to the same system; the two names are used
+interchangeably throughout this artifact.
+
+This artifact accompanies the paper:
+
+> Jian Zhang, Shuai Mu, and Cheng Tan. 2026. *Boomslang: A Modular Framework for
+> Practical Transaction Isolation Verification*. ACM SIGOPS Annual Technical
+> Conference (ATC '26).
 
 Run all commands from the repository root. Experiment inputs are under
 `artifacts/data/`; results are written under `artifacts/results/`.
